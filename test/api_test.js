@@ -59,4 +59,35 @@ describe("Api", function() {
       expect(m.Storia.addHandlerTo()).to.be.an.instanceof(StoriaAPI);
     });
   });
+
+  describe("#route", function() {
+    it("expect to have the route method", function() {
+      expect(typeof m.Storia.route).to.be.eq("function");
+    });
+
+    it("expect to have a list of routes in an array", function () {
+      expect(m.Storia.routes).to.be.an.instanceof(Array);
+    });
+
+    it("expect to return false for a invalid route name", function () {
+      expect(m.Storia.route()).to.be.equal(false);
+      expect(m.Storia.route(null)).to.be.equal(false);
+      expect(m.Storia.route(undefined)).to.be.equal(false);
+      expect(m.Storia.routes).to.be.deep.equal([]);
+    });
+
+    it("expect to save a new route with inside of routes array", function () {
+      m.Storia.route('about');
+
+      expect(m.Storia.routes).to.be.deep.equal([{name: "about", options: {}}]);
+    });
+
+    it("expect to save a new route with the options as a options hash", function () {
+      var opts = {a: "a", b: "b"};
+
+      m.Storia.route('about', opts);
+
+      expect(m.Storia.routes).to.be.deep.equal([{name: "about", options: opts}]);
+    });
+  });
 });
