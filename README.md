@@ -56,16 +56,16 @@ To load ajax pages, storia will make an ajax call to ```/about.html``` for examp
 ### Loading content in different wrappers with different contents
 To have multiple wrappers on your page and make things even more dynamic, you have to specify on your ```data-storia``` element the target option using: ```<ul data-storia data-storia-target=".my-other-wrapper-element"></ul>```, or you can specify on a specific link inside of your ```data-storia``` element.
 
-### Javascript API
+# Javascript API
 You can always use javascript to use all features from storia. If you need to add new routes dynamically or changing behaviors, read about our API:
 
-#### Basic Usage
+## Basic Usage
 (WIP)
 
-#### Options
+## Options
 (WIP)
 
-#### Events
+## Events
 (WIP)
 
 #### Methods 
