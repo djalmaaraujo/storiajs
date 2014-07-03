@@ -26,4 +26,23 @@ describe("Api", function(){
       expect(Storia.defaults).to.deep.equal({bar: "gud"});
     });
   });
+
+  describe("#addHandlerTo", function(){
+    it("expect to have the addHandlerTo method", function () {
+      var Storia = new StoriaAPI();
+      expect(typeof Storia.addHandlerTo).to.be.eq("function");
+    });
+
+    it("expect to have and array of handlers", function () {
+      var Storia = new StoriaAPI();
+      expect(Storia.handlers).to.be.an.instanceof(Array);
+    });
+
+    it("expect to add an item to the list of handlers", function () {
+      var Storia = new StoriaAPI();
+      Storia.addHandlerTo(".my-element")
+
+      expect(Storia.handlers).to.deep.equal([".my-element"]);
+    });
+  });
 });
