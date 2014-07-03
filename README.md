@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/djalmaaraujo/storiajs/status.png)](https://drone.io/github.com/djalmaaraujo/storiajs/latest)
+
 # Storia
 Storia is simple and small library which allows you to create single page applications using the HTML5 History API. It gives you the power to use only html-markup to create a fully navigation website using pushState feature. It's very simple to use and you don't even need a back-end to start creating your website with different URL's for different content pages.
 
@@ -88,27 +90,27 @@ storia.route('about', {
 
 # Options
 ## Global options
-* **globalHandler** 
-* **transport** 
-* **defaultPath** 
-* **defaultTarget** 
+* **globalHandler**
+* **transport**
+* **defaultPath**
+* **defaultTarget**
 
 ## Route Options
 * **from**
 * **target**
 * **transport**
-* **globalHandler** 
+* **globalHandler**
 
 ## Route events
-* **beforeLoad** 
-* **afterLoad** 
+* **beforeLoad**
+* **afterLoad**
 
-## Methods 
+## Methods
 * **setup**
 * **route**
 * **addHandlerTo**
 * **destroyHandler**
-* **destroy** 
+* **destroy**
 
 ## My old javascript handlers are not working anymore
 Yes, no pain no gain. By using async loaded pages, you need to perform event handling using a different strategy like delegated events.
