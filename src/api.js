@@ -1,13 +1,13 @@
-var _ = require('../src/helper');
+(function (global) {
+  var _ = StoriaHelper;
 
-var ROUTE_REGEX = /[+a-zA-Z0-9.-]/;
+  var StoriaAPI = function () {
+     this.defaults = { bar: "baz" };
+    this.handlers = [];
+    this.routes = [];
+  };
 
-var Storia = function () {
-  this.defaults = { bar: "baz" };
-  this.handlers = [];
-  this.routes = [];
-
-  this.setup = function (options) {
+  StoriaAPI.prototype.setup = function (options) {
     var self = this;
 
     self.defaults = _.extend(self.defaults, options);
@@ -15,7 +15,7 @@ var Storia = function () {
     return self;
   };
 
-  this.addHandlerTo = function (handler) {
+  StoriaAPI.prototype.addHandlerTo = function (handler) {
     var self = this;
 
     if (handler === undefined) return self;
@@ -25,7 +25,7 @@ var Storia = function () {
     return self;
   };
 
-  this.route = function (name, options) {
+  StoriaAPI.prototype.route = function (name, options) {
     var self = this;
 
     if (name === undefined) return false;
@@ -38,6 +38,6 @@ var Storia = function () {
 
     return self;
   };
-};
 
-module.exports = Storia;
+  global.StoriaAPI = StoriaAPI;
+}(window));

@@ -1,0 +1,24 @@
+{
+  "name": "storiaJS",
+  "version": "0.0.1",
+  "homepage": "https://github.com/djalmaaraujo/storiajs",
+  "authors": [
+    "djalmaaraujo <djalma.araujo@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "expect": "~0.3.1",
+    "mocha": "~1.20.1",
+    "jquery": "~2.1.1",
+    "chai": "~1.9.1"
+  }
+}

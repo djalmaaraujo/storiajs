@@ -1,6 +1,5 @@
-var expect = require("chai").expect;
-
-var Helper = require("../src/helper.js");
+var expect = chai.expect;
+var Helper = StoriaHelper;
 
 describe("Helper", function(){
   describe("#extend", function () {

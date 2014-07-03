@@ -1,6 +1,4 @@
-var expect = require("chai").expect;
-
-var StoriaAPI = require("../src/api.js");
+var expect = chai.expect;
 var defaults = {
   bar: "baz"
 };

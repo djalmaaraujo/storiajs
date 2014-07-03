@@ -5,9 +5,6 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {
-    "test": "./node_modules/mocha/bin/mocha -R spec test/"
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:djalmaaraujo/storiajs.git"
@@ -17,9 +14,5 @@
   "bugs": {
     "url": "https://github.com/djalmaaraujo/storiajs/issues"
   },
-  "homepage": "https://github.com/djalmaaraujo/storiajs",
-  "devDependencies": {
-    "mocha": "~1.2",
-    "chai": "1.9.1"
-  }
+  "homepage": "https://github.com/djalmaaraujo/storiajs"
 }
