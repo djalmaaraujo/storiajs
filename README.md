@@ -1,5 +1,3 @@
-[![Build Status](https://drone.io/github.com/djalmaaraujo/storiajs/status.png)](https://drone.io/github.com/djalmaaraujo/storiajs/latest)
-
 # Storia
 Storia is simple and small library which allows you to create single page applications using the HTML5 History API. It gives you the power to use only html-markup to create a fully navigation website using pushState feature. It's very simple to use and you don't even need a back-end to start creating your website with different URL's for different content pages.
 
