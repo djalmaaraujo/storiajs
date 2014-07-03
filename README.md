@@ -103,7 +103,7 @@ storia.route('about', {
 * **beforeLoad** 
 * **afterLoad** 
 
-#### Methods 
+## Methods 
 * **setup**
 * **route**
 * **addHandlerTo**
