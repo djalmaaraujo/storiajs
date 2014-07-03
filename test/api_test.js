@@ -73,13 +73,13 @@ describe("Api", function() {
       expect(m.Storia.route()).to.be.equal(false);
       expect(m.Storia.route(null)).to.be.equal(false);
       expect(m.Storia.route(undefined)).to.be.equal(false);
-      expect(m.Storia.routes).to.be.deep.equal([]);
+      expect(m.Storia.routes).eql([]);
     });
 
     it("expect to save a new route with inside of routes array", function () {
       m.Storia.route('about');
 
-      expect(m.Storia.routes).to.be.deep.equal([{name: "about", options: {}}]);
+      expect(m.Storia.routes).eql([{name: "about", options: {}}]);
     });
 
     it("expect to save a new route with the options as a options hash", function () {
@@ -87,7 +87,7 @@ describe("Api", function() {
 
       m.Storia.route('about', opts);
 
-      expect(m.Storia.routes).to.be.deep.equal([{name: "about", options: opts}]);
+      expect(m.Storia.routes).eql([{name: "about", options: opts}]);
     });
   });
 });
