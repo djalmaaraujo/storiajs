@@ -7,7 +7,7 @@ First, you need to load your storia library. You can use CDNJS or download your 
 <script type="text/javascript" src="path/to/your/storia.js"></script>
 ```
 
-If you don't have one or more ```data-storia``` elements on your html, storia will capture all links by default. This will make all links from application acting as a template based html templates. If you want only parts of your applications using storia features, please, follow the next instructions:
+If you don't have one or more ```data-storia``` elements on your html, storia will capture all links by default. This will make all links from the application acting as a template based html templates. If you want only parts of your applications using storia features, please, follow the next instructions:
 
 You have at least 3 ways to use. The simplest way is adding a ```data-storia``` attribute to every link on the page that you need to capture.
 
