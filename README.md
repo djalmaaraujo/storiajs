@@ -44,10 +44,14 @@ By doing this, storia will search for hidden elements with the following pattern
 ### Loading pages with ajax
 If you want to load your html templates in different pages, storia will use ajax for you. To make things happen with ajax, you can specify on your ```data-storia``` element, using: ```<ul data-storia data-storia-transport="ajax"> ... </ul>```. The default option would be ```replace```.
 
-Notice that you can use multiple wrappers to load the same content, but this is not recommended for obvious reasons. It's up to you, the power is on your hands. But.. what if you want to load different contents? Follow the next instructions.
+Notice that you can combine multiple transports. If you have a list of links, you can setup to use the ajax transport on all links, except the ones that you added ```data-storia-transport="replace"```. These links will use the default behavior, instead of the parent configuration.
+
+To load ajax pages, storia will make an ajax call to ```/about.html``` for example. So, allow your server to receive these requests and make sure the template file exists.
+
+```Notice that you can use multiple wrappers to load the same content, but this is not recommended for obvious reasons. It's up to you, the power is on your hands. But.. what if you want to load different contents? Follow the next instructions.```
 
 ### Loading content in different wrappers with different contents
-(WIP)
+To have multiple wrappers on your page and make things even more dynamic, you have to specify on your ```data-storia``` element the target option using: ```<ul data-storia data-storia-target="#id or .class to the element"></ul>```, or you can specify on a specific link inside of your ```data-storia``` element.
 
 ### Javascript API
 You can always use javascript to use all features from storia. If you need to add new routes dynamically or changing behaviors, read about our API:
