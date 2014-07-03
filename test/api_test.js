@@ -25,6 +25,12 @@ describe("Api", function(){
 
       expect(Storia.defaults).to.deep.equal({bar: "gud"});
     });
+
+    it("expect that addHandlerTo returns the instance of Storia library", function () {
+      var Storia = new StoriaAPI();
+
+      expect(Storia.setup({bar: "gud"})).to.be.an.instanceof(StoriaAPI);
+    });
   });
 
   describe("#addHandlerTo", function(){
@@ -40,9 +46,21 @@ describe("Api", function(){
 
     it("expect to add an item to the list of handlers", function () {
       var Storia = new StoriaAPI();
-      Storia.addHandlerTo(".my-element")
+      Storia.addHandlerTo(".my-element");
 
       expect(Storia.handlers).to.deep.equal([".my-element"]);
+    });
+
+    it("expect to dont add if handler parameter is empty", function () {
+      var Storia = new StoriaAPI();
+      Storia.addHandlerTo();
+
+      expect(Storia.handlers).to.deep.equal([]);
+    });
+
+    it("expect that addHandlerTo returns the instance of Storia library", function () {
+      var Storia = new StoriaAPI();
+      expect(Storia.addHandlerTo()).to.be.an.instanceof(StoriaAPI);
     });
   });
 });

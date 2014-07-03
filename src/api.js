@@ -15,6 +15,8 @@ var Storia = function () {
   this.addHandlerTo = function (handler) {
     var self = this;
 
+    if (handler === undefined) return self;
+
     self.handlers.push(handler);
 
     return self;
