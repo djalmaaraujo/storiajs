@@ -60,16 +60,55 @@ To have multiple wrappers on your page and make things even more dynamic, you ha
 You can always use javascript to use all features from storia. If you need to add new routes dynamically or changing behaviors, read about our API:
 
 ## Basic Usage
-(WIP)
+### Setup storia
+```javascript
+storia.setup({
+  transport: "replace" // replace or ajax
+  globalHandler: "a" // all links will be capture on the page
+  defaultPath: "/js/something" // to dont overwrite the entire path, ex: localhost/projects/storia/PATH, will just change PATH
+  defaultTarget: "#id or .element" // default (will get all elements with the attribute data-storia-wrapper)
+});
+```
 
-## Options
-(WIP)
+### Add multiple link handlers
+```javascript
+storia.addHandlerTo("#id or element") // will search for all links inside of that element. Good for multiple parts of the page
+```
 
-## Events
-(WIP)
+### Add a new route
+```javascript
+storia.route('about', {
+  from: "#about-template-id", // omit if using ajax as a transport
+  target: ".my-element-wrapper" // default (will get all elements with the attribute data-storia-wrapper)
+  transport: "ajax" // replace by default
+  beforeLoad: function () {},
+  afterLoad: function () {}
+});
+```
+
+# Options
+## Global options
+* **globalHandler** 
+* **transport** 
+* **defaultPath** 
+* **defaultTarget** 
+
+## Route Options
+* **from**
+* **target**
+* **transport**
+* **globalHandler** 
+
+## Route events
+* **beforeLoad** 
+* **afterLoad** 
 
 #### Methods 
-(WIP)
+* **setup**
+* **route**
+* **addHandlerTo**
+* **destroyHandler**
+* **destroy** 
 
 ## My old javascript handlers are not working anymore
 Yes, no pain no gain. By using async loaded pages, you need to perform event handling using a different strategy like delegated events.
