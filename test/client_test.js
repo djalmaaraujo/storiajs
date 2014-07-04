@@ -1,11 +1,15 @@
 var expect = chai.expect;
 var api = new StoriaAPI();
+var historyAPI = {
+  pushState: function(data, title, path) {}
+};
+
 
 describe("StoriaClient", function() {
   var m = {};
 
   beforeEach(function () {
-    m.client = new StoriaClient(api);
+    m.client = new StoriaClient(api, historyAPI);
   });
 
   afterEach(function() {
@@ -58,12 +62,9 @@ describe("StoriaClient", function() {
     });
 
     it("expect to call history.pushState with the pre-defined pattern of a id", function() {
-      var template = "#about-template-content";
-
-      var spy = sinon.spy(history, 'pushState');
+      var spy = sinon.spy(historyAPI, 'pushState');
 
       m.client.setup();
-
       m.client.changeState('about');
 
       expect(spy.calledWith(null, 'about', '/about')).true

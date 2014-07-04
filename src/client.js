@@ -1,7 +1,11 @@
 (function (global) {
-  var StoriaClient = function(storiaAPI) {
+  var StoriaClient = function(storiaAPI, HistoryAPI) {
     if (StoriaAPI !== undefined) {
       this.api = storiaAPI;
+    }
+
+    if (HistoryAPI !== undefined) {
+      this.historyAPI = HistoryAPI;
     }
 
     this.setup();
@@ -32,7 +36,7 @@
   };
 
   StoriaClient.prototype.changeState = function(name) {
-    history.pushState(null, name, '/' + name);
+    this.historyAPI.pushState(null, name, '/' + name);
   };
 
 
