@@ -20,8 +20,21 @@
   };
 
   StoriaClient.prototype.bindGlobalHandler = function() {
+    var self = this;
 
+    document.querySelector('body').addEventListener('click', function (e) {
+      if (e.target && e.target.nodeName == "A") {
+        self.changeState(e.target.href);
+      }
+
+      e.preventDefault();
+    });
   };
+
+  StoriaClient.prototype.changeState = function(name) {
+    history.pushState(null, name, '/' + name);
+  };
+
 
   global.StoriaClient = StoriaClient;
 }(window));

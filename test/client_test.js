@@ -8,6 +8,10 @@ describe("StoriaClient", function() {
     m.client = new StoriaClient(api);
   });
 
+  afterEach(function() {
+    $("#sandbox").html('');
+  });
+
   describe("#constructor", function() {
 
     it("expect to exists (dumb)", function() {
@@ -25,32 +29,44 @@ describe("StoriaClient", function() {
 
       m.client.setup();
 
-      expect(spy.called).true
+      expect(m.client.hasNoHandlers()).true;
+      expect(spy.called).true;
     });
 
     it("expect to bind have globalHandler option with default content as A", function() {
       expect(m.client.api.defaults.globalHandler).equal("a");
     });
-  });
 
-  describe("#searchForHandlers", function() {
-    it("expect to have a empty handlers array for no data-storia elements found");
-    it("expect to add handlers to handlers array based on the amount of data-storia elements in the dom");
-  });
+    it("expect to add click handler to all links that matches with globalHandler", function() {
+      var spy = sinon.spy(document, 'querySelector');
 
-  describe("#bindHandlers", function() {
-    it("expect to add delegate click event to the parent element of a data-storia element");
-  });
+      m.client.setup();
 
-  describe("#getTemplate", function() {
-  });
-
-  describe("#appendTemplate", function() {
+      expect(spy.calledWith('body')).true
+    });
   });
 
   describe("#changeState", function() {
-  });
+    it("expect to receive the route name", function() {
+      var spy = sinon.spy(m.client, 'changeState');
 
-  describe("#getTargetElement", function() {
+      m.client.setup();
+
+      m.client.changeState('about');
+
+      expect(spy.calledWith('about')).true
+    });
+
+    it("expect to call history.pushState with the pre-defined pattern of a id", function() {
+      var template = "#about-template-content";
+
+      var spy = sinon.spy(history, 'pushState');
+
+      m.client.setup();
+
+      m.client.changeState('about');
+
+      expect(spy.calledWith(null, 'about', '/about')).true
+    });
   });
 });
