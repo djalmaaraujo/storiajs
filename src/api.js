@@ -2,7 +2,7 @@
   var _ = StoriaHelper;
 
   var StoriaAPI = function () {
-     this.defaults = { bar: "baz" };
+    this.defaults = { globalHandler: "a" };
     this.handlers = [];
     this.routes = [];
   };

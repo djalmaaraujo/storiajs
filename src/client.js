@@ -8,6 +8,8 @@
   };
 
   StoriaClient.prototype.setup = function() {
+    this.api.setup();
+
     if (this.hasNoHandlers()) {
       this.bindGlobalHandler();
     }

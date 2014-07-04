@@ -1,6 +1,6 @@
 var expect = chai.expect;
 var defaults = {
-  bar: "baz"
+  globalHandler: "a"
 };
 
 describe("Api", function() {
@@ -8,6 +8,7 @@ describe("Api", function() {
 
   beforeEach(function () {
     m.Storia = new StoriaAPI();
+    m.Storia.defaults = defaults;
   });
 
   describe("#constructor", function() {
@@ -22,9 +23,9 @@ describe("Api", function() {
     });
 
     it("expect to pass options and overwrite the default options", function() {
-      m.Storia.setup({bar: "gud"});
+      m.Storia.setup({globalHandler: "gud"});
 
-      expect(m.Storia.defaults).to.deep.equal({bar: "gud"});
+      expect(m.Storia.defaults).to.deep.equal({globalHandler: "gud"});
     });
 
     it("expect that addHandlerTo returns the instance of Storia library", function() {

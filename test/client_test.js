@@ -2,12 +2,13 @@ var expect = chai.expect;
 var api = new StoriaAPI();
 
 describe("StoriaClient", function() {
-  describe("#constructor", function() {
-    var m = {};
+  var m = {};
 
-    beforeEach(function () {
-      m.client = new StoriaClient(api);
-    });
+  beforeEach(function () {
+    m.client = new StoriaClient(api);
+  });
+
+  describe("#constructor", function() {
 
     it("expect to exists (dumb)", function() {
       expect(m.client).to.be.an.instanceof(StoriaClient);
@@ -19,15 +20,16 @@ describe("StoriaClient", function() {
   });
 
   describe("#bindGlobalHandler", function() {
-    var m = {};
-
     it("call bindGlobalHandler if handlers array is empty", function() {
-      m.client = new StoriaClient(api);
       var spy = sinon.spy(m.client, 'bindGlobalHandler');
 
       m.client.setup();
 
       expect(spy.called).true
+    });
+
+    it("expect to bind have globalHandler option with default content as A", function() {
+      expect(m.client.api.defaults.globalHandler).equal("a");
     });
   });
 
