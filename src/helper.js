@@ -12,4 +12,10 @@
       return obj;
     }
   };
+
+  if (typeof console === "undefined") {
+    window.console = {
+      log: function(message) {}
+    }
+  }
 }(window));
