@@ -28,10 +28,10 @@
 
     document.querySelector('body').addEventListener('click', function (e) {
       if (e.target && e.target.nodeName == "A") {
-        self.changeState(e.target);
+        if (self.changeState(e.target) !== false) {
+          e.preventDefault();
+        }
       }
-
-      e.preventDefault();
     });
   };
 
