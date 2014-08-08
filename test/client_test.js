@@ -51,6 +51,10 @@ describe('StoriaClient', function() {
   });
 
   describe('#changeState', function() {
+    beforeEach(function() {
+      $('#sandbox').append('<div id="about-template-content" style="display: none;"><p>Hello world</p></div><section id="my-first-target" data-storia-wrapper></section>');
+    });
+
     it('expect to receive the route name', function() {
       var spy = sinon.spy(m.client, 'changeState');
 
@@ -63,12 +67,14 @@ describe('StoriaClient', function() {
 
     it('expect to call history.pushState with the pre-defined pattern of a id', function() {
       var spy = sinon.spy(historyAPI, 'pushState');
+      var spy2 = sinon.spy(m.client, 'writeWrapperContentFor');
 
       m.client.setup();
       m.client.api.route('about');
       m.client.changeState({pathname: 'about'});
 
       expect(spy.calledWith(null, 'about', '/about')).true
+      expect(spy2.calledWith('about')).true
     });
   });
 
@@ -98,4 +104,24 @@ describe('StoriaClient', function() {
     });
   });
 
+  describe('#getWrapper', function() {
+    beforeEach(function() {
+      $('#sandbox').append('<section id="my-first-target" data-storia-wrapper></section>');
+    });
+
+    it('expect to return an element with a data-storia-wrapper attribute attached', function() {
+      expect(m.client.getWrapper().id).equal('my-first-target')
+    });
+  });
+
+  describe('#writeWrapperContentFor', function() {
+    beforeEach(function() {
+      $('#sandbox').append('<div id="crazy-template-content" style="display: none;"><p>Hello world</p></div><section id="my-first-target" data-storia-wrapper></section>');
+    });
+
+    it('expect append the route content on the wrapper', function() {
+      m.client.writeWrapperContentFor('crazy');
+      expect($('#my-first-target').html()).equal('<p>Hello world</p>');
+    });
+  });
 });

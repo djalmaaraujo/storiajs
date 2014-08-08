@@ -1,5 +1,6 @@
 (function (global) {
-  var ROUTE_ELEMENT_ID_TEMPLATE = '{route}-template-content';
+  var ROUTE_ELEMENT_ID_TEMPLATE_NAME = '{route}-template-content';
+  var WRAPPER_TEMPLATE_NAME = 'data-storia-wrapper';
 
   var StoriaClient = function(storiaAPI, HistoryAPI) {
     if (StoriaAPI !== undefined) {
@@ -42,6 +43,7 @@
 
     if (this.isValidRoute(routeName)) {
       this.historyAPI.pushState(null, routeName, '/' + routeName);
+      this.writeWrapperContentFor(routeName);
     } else {
       return false;
     }
@@ -56,11 +58,19 @@
       return false;
     }
 
-    return ROUTE_ELEMENT_ID_TEMPLATE.replace('{route}', routeName);
+    return ROUTE_ELEMENT_ID_TEMPLATE_NAME.replace('{route}', routeName);
   };
 
   StoriaClient.prototype.getRouteContentFor = function(routeName) {
     return document.getElementById(this.getRouteElementId(routeName)).innerHTML;
+  };
+
+  StoriaClient.prototype.getWrapper = function() {
+    return document.querySelector('[' + WRAPPER_TEMPLATE_NAME + ']');
+  };
+
+  StoriaClient.prototype.writeWrapperContentFor = function(routeName) {
+    return this.getWrapper().innerHTML = this.getRouteContentFor(routeName);
   };
 
   global.StoriaClient = StoriaClient;
