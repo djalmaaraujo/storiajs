@@ -6,22 +6,19 @@
   </head>
 <body>
 
-<a href="/js/storiaJS/about" id="#hello">Hello</a>
-<a href="/js/storiaJS/about2" id="#hello2">Hello</a>
-<a href="/js/storiaJS/about3" id="#hello3">Hello</a>
+<a href="/about" id="#hello">Hello</a>
+<a href="/about2" id="#hello2">Hello</a>
+<a href="/about3" id="#hello3">Hello</a>
+
+<script src="src/helper.js"></script>
+<script src="src/api.js"></script>
+<script src="src/client.js"></script>
 
 <script type="text/javascript">
-function handler(event) {
-  history.pushState({a: "b"}, event.target.textContent, event.target.href);
-  return event.preventDefault();
-}
-document.getElementById('#hello').addEventListener('click', handler, false);
-document.getElementById('#hello2').addEventListener('click', handler, false);
-document.getElementById('#hello3').addEventListener('click', handler, false);
-
-window.addEventListener('popstate', function (event) {
-  console.log(event);
-});
+  var m = {};
+  m.api = new StoriaAPI();
+  m.client = new StoriaClient(m.api, history);
+  m.client.api.route('about');
 </script>
 </body>
 </html>
