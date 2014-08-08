@@ -38,14 +38,14 @@
   StoriaClient.prototype.changeState = function(target) {
     var routeName = target.pathname.replace('/', '');
 
-    if (this.routeExists(routeName)) {
+    if (this.isValidRoute(routeName)) {
       this.historyAPI.pushState(null, routeName, '/' + routeName);
     } else {
       return false;
     }
   };
 
-  StoriaClient.prototype.routeExists = function(routeName) {
+  StoriaClient.prototype.isValidRoute = function(routeName) {
     return (this.api.routesNames.indexOf(routeName) > -1);
   };
 
