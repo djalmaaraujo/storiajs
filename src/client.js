@@ -1,4 +1,6 @@
 (function (global) {
+  var ROUTE_ELEMENT_ID_TEMPLATE = '{route}-template-content';
+
   var StoriaClient = function(storiaAPI, HistoryAPI) {
     if (StoriaAPI !== undefined) {
       this.api = storiaAPI;
@@ -47,6 +49,18 @@
 
   StoriaClient.prototype.isValidRoute = function(routeName) {
     return (this.api.routesNames.indexOf(routeName) > -1);
+  };
+
+  StoriaClient.prototype.getRouteElementId = function(routeName) {
+    if (!routeName) {
+      return false;
+    }
+
+    return ROUTE_ELEMENT_ID_TEMPLATE.replace('{route}', routeName);
+  };
+
+  StoriaClient.prototype.getRouteContentFor = function(routeName) {
+    return document.getElementById(this.getRouteElementId(routeName)).innerHTML;
   };
 
   global.StoriaClient = StoriaClient;
