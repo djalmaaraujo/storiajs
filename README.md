@@ -118,3 +118,17 @@ You can read more about this here:
 * http://api.jquery.com/delegate/
 * http://javascript.info/tutorial/event-delegation
 * http://davidwalsh.name/event-delegate
+
+## Contribution & Setup
+* git clone ```git@github.com:djalmaaraujo/storiajs.git```
+* bower install
+* Open a simple server, for example: ```python -m SimpleHTTPServer```
+* Tests are in /test.html
+* Simple demos are in: /index.html
+
+## License
+
+[MIT License](http://djalmaarajo.mit-license.org/) © Djalma Araújo
+
+---------------------------
+[cc company](http://nossomos.cc) - Code Consultants and Open Source Coding
