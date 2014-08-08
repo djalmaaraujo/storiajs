@@ -62,11 +62,25 @@
   };
 
   StoriaClient.prototype.getRouteContentFor = function(routeName) {
-    return document.getElementById(this.getRouteElementId(routeName)).innerHTML;
+    var element = document.getElementById(this.getRouteElementId(routeName));
+
+    if (!element) {
+      console.log('You need to create an element with this pattern ID: #' + ROUTE_ELEMENT_ID_TEMPLATE_NAME.replace('{route}', routeName));
+      return false;
+    }
+
+    return element.innerHTML;
   };
 
   StoriaClient.prototype.getWrapper = function() {
-    return document.querySelector('[' + WRAPPER_TEMPLATE_NAME + ']');
+    var wrapper = document.querySelector('[' + WRAPPER_TEMPLATE_NAME + ']');
+
+    if (!wrapper) {
+      console.log('You need at least one element with the attribute: ' + WRAPPER_TEMPLATE_NAME);
+      return false;
+    }
+
+    return wrapper;
   };
 
   StoriaClient.prototype.writeWrapperContentFor = function(routeName) {
