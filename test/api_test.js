@@ -87,6 +87,7 @@ describe("Api", function() {
       m.Storia.route('about', opts);
 
       expect(m.Storia.routes).eql([{name: "about", options: opts}]);
+      expect(m.Storia.routesNames).eql(["about"]);
     });
   });
 });

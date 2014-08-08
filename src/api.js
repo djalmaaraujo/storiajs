@@ -5,6 +5,7 @@
     this.defaults = { globalHandler: "a" };
     this.handlers = [];
     this.routes = [];
+    this.routesNames = [];
   };
 
   StoriaAPI.prototype.setup = function (options) {
@@ -34,7 +35,8 @@
 
     options = (options) ? options : {};
 
-    self.routes.push({name: "about", options: options});
+    self.routes.push({name: name, options: options});
+    self.routesNames.push(name);
 
     return self;
   };

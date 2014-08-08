@@ -28,17 +28,26 @@
 
     document.querySelector('body').addEventListener('click', function (e) {
       if (e.target && e.target.nodeName == "A") {
-        self.changeState(e.target.href);
+        self.changeState(e.target);
       }
 
       e.preventDefault();
     });
   };
 
-  StoriaClient.prototype.changeState = function(name) {
-    this.historyAPI.pushState(null, name, '/' + name);
+  StoriaClient.prototype.changeState = function(target) {
+    var routeName = target.pathname.replace('/', '');
+
+    if (this.routeExists(routeName)) {
+      this.historyAPI.pushState(null, routeName, '/' + routeName);
+    } else {
+      return false;
+    }
   };
 
+  StoriaClient.prototype.routeExists = function(routeName) {
+    return (this.api.routesNames.indexOf(routeName) > -1);
+  };
 
   global.StoriaClient = StoriaClient;
 }(window));

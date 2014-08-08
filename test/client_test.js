@@ -56,16 +56,17 @@ describe("StoriaClient", function() {
 
       m.client.setup();
 
-      m.client.changeState('about');
+      m.client.changeState({pathname: 'about'});
 
-      expect(spy.calledWith('about')).true
+      expect(spy.calledWith({pathname: 'about'})).true
     });
 
     it("expect to call history.pushState with the pre-defined pattern of a id", function() {
       var spy = sinon.spy(historyAPI, 'pushState');
 
       m.client.setup();
-      m.client.changeState('about');
+      m.client.api.route('about');
+      m.client.changeState({pathname: 'about'});
 
       expect(spy.calledWith(null, 'about', '/about')).true
     });
