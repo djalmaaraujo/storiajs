@@ -4,7 +4,6 @@ var historyAPI = {
   pushState: function(data, title, path) {}
 };
 
-
 describe('StoriaClient', function() {
   var m = {};
 
@@ -122,6 +121,22 @@ describe('StoriaClient', function() {
     it('expect append the route content on the wrapper', function() {
       m.client.writeWrapperContentFor('crazy');
       expect($('#my-first-target').html()).equal('<p>Hello world</p>');
+    });
+  });
+
+  describe("#bindHandlers", function () {
+    beforeEach(function() {
+      $('#sandbox').append('<a href="#" data-storia>a</a><a href="#" data-storia>b</a>');
+    });
+
+    it('should return client instance', function () {
+      expect(m.client.bindHandlers()).to.be.an.instanceof(StoriaClient);
+    });
+
+    it('set handlers array with the elements', function () {
+      m.client.bindHandlers();
+      expect(m.client.api.handlers.length).equal(2);
+      expect(m.client.hasNoHandlers()).false
     });
   });
 });

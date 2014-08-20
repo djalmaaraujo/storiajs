@@ -1,6 +1,7 @@
 (function (global) {
   var ROUTE_ELEMENT_ID_TEMPLATE_NAME = '{route}-template-content';
   var WRAPPER_TEMPLATE_NAME = 'data-storia-wrapper';
+  var HANDLER_ATTRIBUTE_NAME = 'data-storia';
 
   var StoriaClient = function(storiaAPI, HistoryAPI) {
     if (StoriaAPI !== undefined) {
@@ -11,6 +12,7 @@
       this.historyAPI = HistoryAPI;
     }
 
+    this.bindHandlers();
     this.setup();
   };
 
@@ -36,6 +38,16 @@
         }
       }
     });
+  };
+
+  StoriaClient.prototype.bindHandlers = function() {
+    var handlers = document.querySelectorAll('[' + HANDLER_ATTRIBUTE_NAME + ']');
+
+    if (handlers.length) {
+      this.api.handlers = handlers;
+    }
+
+    return this;
   };
 
   StoriaClient.prototype.changeState = function(target) {
