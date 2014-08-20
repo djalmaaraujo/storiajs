@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Storia Simple DEMO</title>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/css/foundation.min.css">
+  </head>
+<body>
+  <div class="stick">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/home">Storia Demo</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><a href="/about" id="#hello">About works</a></li>
+          <li><a href="/about2" id="#hello2">Hello no found</a></li>
+          <li><a href="http://www.google.com/" id="#hello3">Free link</a></li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <header class="panel callout">
+        <h1>Hello, this is our first content.</h1>
+        <ul>
+        </ul>
+      </header>
+
+      <section class="panel" data-storia-wrapper>
+        <p>I should change when a click event is fired.</p>
+      </section>
+    </div>
+  </div>
+
+  <div id="about-template-content" class="hide">This is the rhythm of the night.</div>
+  <div id="home-template-content" class="hide">
+    <p>I should change when a click event is fired.</p>
+  </div>
+
+  <script src="../src/helper.js"></script>
+  <script src="../src/api.js"></script>
+  <script src="../src/client.js"></script>
+
+  <script type="text/javascript">
+    var m = {};
+    m.api = new StoriaAPI();
+    m.client = new StoriaClient(m.api, history);
+    m.client.api.route('about');
+    m.client.api.route('home');
+  </script>
+</body>
+</html>
