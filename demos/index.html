@@ -45,13 +45,11 @@
   </div>
 
   <script src="../src/helper.js"></script>
-  <script src="../src/api.js"></script>
   <script src="../src/client.js"></script>
 
   <script type="text/javascript">
     var m = {};
-    m.api = new StoriaAPI();
-    m.client = new StoriaClient(m.api, history);
+    m.client = new StoriaClient(history);
     m.client.api.route('about');
     m.client.api.route('home');
   </script>

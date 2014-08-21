@@ -5,11 +5,7 @@
   var A_TAG                          = 'A';
   var _                              = StoriaHelper;
 
-  var StoriaClient = function(storiaAPI, HistoryAPI) {
-    if (StoriaAPI !== undefined) {
-      this.api = storiaAPI;
-    }
-
+  var StoriaClient = function(HistoryAPI) {
     if (HistoryAPI !== undefined) {
       this.historyAPI = HistoryAPI;
     }
@@ -18,47 +14,21 @@
   };
 
   StoriaClient.prototype.setup = function() {
-    this.api.setup();
     this.bindHandlers();
-
-    if (this.hasNoHandlers()) {
-      this.bindGlobalHandler();
-    }
-  };
-
-  StoriaClient.prototype.hasNoHandlers = function() {
-    return (this.api.handlers.length == 0);
-  };
-
-  StoriaClient.prototype.bindGlobalHandler = function() {
-    var self = this;
-
-    document.querySelector('body').addEventListener('click', function (e) {
-      if (e.target && e.target.nodeName == A_TAG) {
-        if (self.changeState(e.target) !== false) {
-          e.preventDefault();
-        }
-      }
-    });
   };
 
   StoriaClient.prototype.bindHandlers = function() {
-    var handlers = document.querySelectorAll('[' + HANDLER_ATTRIBUTE_NAME + ']');
     var self = this;
 
-    if (handlers.length) {
-      this.api.handlers = handlers;
+    document.querySelector('body').addEventListener('click', function (e) {
+      var el     = e.target;
+      var target = (_.isAnAnchor(el) && _.hasHandlerAttribute(el)) ? el : _.findFirstParentOf(el, A_TAG);
 
-      document.querySelector('body').addEventListener('click', function (e) {
-        var el     = e.target;
-        var target = (_.isAnAnchor(el) && _.hasHandlerAttribute(el)) ? el : _.findFirstParentOf(el, A_TAG);
-
-        if (target) {
-          self.changeState(target);
-          e.preventDefault();
-        }
-      });
-    }
+      if (target) {
+        self.changeState(target);
+        e.preventDefault();
+      }
+    });
 
     return self;
   };
