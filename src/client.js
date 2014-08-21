@@ -1,7 +1,9 @@
 (function (global) {
   var ROUTE_ELEMENT_ID_TEMPLATE_NAME = '{route}-template-content';
-  var WRAPPER_TEMPLATE_NAME = 'data-storia-wrapper';
-  var HANDLER_ATTRIBUTE_NAME = 'data-storia';
+  var WRAPPER_TEMPLATE_NAME          = 'data-storia-wrapper';
+  var HANDLER_ATTRIBUTE_NAME         = 'data-storia';
+  var A_TAG                          = 'A';
+  var _                              = StoriaHelper;
 
   var StoriaClient = function(storiaAPI, HistoryAPI) {
     if (StoriaAPI !== undefined) {
@@ -12,12 +14,12 @@
       this.historyAPI = HistoryAPI;
     }
 
-    this.bindHandlers();
     this.setup();
   };
 
   StoriaClient.prototype.setup = function() {
     this.api.setup();
+    this.bindHandlers();
 
     if (this.hasNoHandlers()) {
       this.bindGlobalHandler();
@@ -32,7 +34,7 @@
     var self = this;
 
     document.querySelector('body').addEventListener('click', function (e) {
-      if (e.target && e.target.nodeName == "A") {
+      if (e.target && e.target.nodeName == A_TAG) {
         if (self.changeState(e.target) !== false) {
           e.preventDefault();
         }
@@ -42,23 +44,30 @@
 
   StoriaClient.prototype.bindHandlers = function() {
     var handlers = document.querySelectorAll('[' + HANDLER_ATTRIBUTE_NAME + ']');
+    var self = this;
 
     if (handlers.length) {
       this.api.handlers = handlers;
+
+      document.querySelector('body').addEventListener('click', function (e) {
+        var el     = e.target;
+        var target = (_.isAnAnchor(el) && _.hasHandlerAttribute(el)) ? el : _.findFirstParentOf(el, A_TAG);
+
+        if (target) {
+          self.changeState(target);
+          e.preventDefault();
+        }
+      });
     }
 
-    return this;
+    return self;
   };
 
   StoriaClient.prototype.changeState = function(target) {
     var routeName = target.pathname.replace('/', '');
 
-    if (this.isValidRoute(routeName)) {
-      this.historyAPI.pushState(null, routeName, '/' + routeName);
-      this.writeWrapperContentFor(routeName);
-    } else {
-      return false;
-    }
+    this.historyAPI.pushState(null, routeName, '/' + routeName);
+    this.writeWrapperContentFor(routeName);
   };
 
   StoriaClient.prototype.isValidRoute = function(routeName) {
