@@ -17,7 +17,7 @@ Storia is simple and small library which allows you to create single page applic
   ...
   <body data-storia>
   ...
-</html
+</html>
 ```
 
 Or you can add the handler to specific links:
@@ -57,16 +57,17 @@ By default, Storia will use a default pattern to match all your routes with ```h
 ```html
 <html>
 <head></head>
-<body data-storia>
-  <a href="/pages/about">About Us</a>
+  <body data-storia>
+    <a href="/pages/about">About Us</a>
 
-  <div data-storia-wrapper></div>
+    <div data-storia-wrapper></div>
 
-  <div id="pages-about-template-content" style="display: none;">
-    <h1>About our company!</h1>
-    <p>Lorem ipsum =)</p>
-  </div>
-</body>
+    <div id="pages-about-template-content" style="display: none;">
+      <h1>About our company!</h1>
+      <p>Lorem ipsum =)</p>
+    </div>
+  </body>
+</html>
 ```
 
 All your links will match divs with this pattern **ID**: ```#yourrote-template-content```. You don't need to care about server side process.
