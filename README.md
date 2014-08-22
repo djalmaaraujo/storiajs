@@ -112,7 +112,7 @@ To load content in different wrappers with different contents, you need to speci
 * bower install
 * Open a simple server, for example: ```python -m SimpleHTTPServer```
 * Tests are in /test.html
-* Simple demos are in: /index.html
+* Simple demos are in: /demos
 
 ## License
 
