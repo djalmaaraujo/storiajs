@@ -56,7 +56,7 @@ By default, Storia will use a default pattern to match all your routes with ```h
 
 ```html
 <html>
-<head></head>
+  <head></head>
   <body data-storia>
     <a href="/pages/about">About Us</a>
 
@@ -80,8 +80,6 @@ Pretty good for simple websites.
 If you have a directory struture like this: ```pages/about.html``` and you want to load your about content inside of your wrapper, you can specify the ajax transport on your setup:
 
 ```html
-<html>
-<head></head>
 <body data-storia data-storia-transport="ajax">
 ```
 
@@ -103,7 +101,7 @@ To load content in different wrappers with different contents, you need to speci
   <div data-storia-wrapper></div>
   <div class="my-custom-wrapper"></div>
 
-  <a href="/pages/about/moreinfo" data-storia-target=".my-custom-wrapper"></a>a
+  <a href="/pages/about/moreinfo" data-storia-target=".my-custom-wrapper"></a>
 </body>
 ```
 
