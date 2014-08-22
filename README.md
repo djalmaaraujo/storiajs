@@ -2,13 +2,13 @@
 Storia is simple and small library which allows you to create single page applications using the HTML5 History API. It gives you the power to use only html-markup to create a fully navigation website using pushState feature. It's very simple to use and you don't even need a back-end to start creating your website with different URL's for different content pages.
 
 ## Basic Usage
-1. First, you need to load your storia library.
+First, you need to load your storia library.
 
 ```html
 <script type="text/javascript" src="path/to/your/storia.js"></script>
 ```
 
-2. Add one or more handlers to your HTML:
+Add one or more handlers to your HTML:
 
 ```html
 <html>
