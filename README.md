@@ -70,7 +70,7 @@ By default, Storia will use a default pattern to match all your routes with ```h
 </html>
 ```
 
-All your links will match divs with this pattern **ID**: ```#yourrote-template-content```. You don't need to care about server side process.
+All your links will match divs with this pattern **ID**: ```#yourroute-template-content```. You don't need to care about server side process.
 
 Storia will grab the HTML content of this **DIV**, change your URL and then append the HTML in the wrapper.
 
@@ -94,7 +94,7 @@ When the click event happen, storia will load your template ```pages/about.html`
 The good thing about this, is that you can access those pages without pushState, and use for SEO or Bookmark purposes. If you paste http://yourwebsite.com/pages/about.html, still works.
 
 #### Multiple Wrappers
-To load content in different wrappers with different contents, you can speciy on the link element the target wrapper. If you look at the example below you can see two wrappers, but the content will be appended to the custom one.
+To load content in different wrappers with different contents, you need to specify a target wrapper on the link. If you look at the example below you can see two wrappers, but the content will be appended to the custom one.
 
 ```html
 <html>
@@ -106,15 +106,6 @@ To load content in different wrappers with different contents, you can speciy on
   <a href="/pages/about/moreinfo" data-storia-target=".my-custom-wrapper"></a>a
 </body>
 ```
-
-## My old javascript handlers are not working anymore
-Yes, no pain no gain. By using async loaded pages, you need to perform event handling using a different strategy like delegated events.
-
-You can read more about this here:
-
-* http://api.jquery.com/delegate/
-* http://javascript.info/tutorial/event-delegation
-* http://davidwalsh.name/event-delegate
 
 ## Contribution & Setup
 * git clone ```git@github.com:djalmaaraujo/storiajs.git```
