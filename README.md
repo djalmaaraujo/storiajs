@@ -106,14 +106,16 @@ To load content in different wrappers with different contents, you need to speci
 ```
 
 ## Roadmap
-* [x] Basic usage with unique links
-* [x] Ignore other links without data-storia element
-* [x] Load content on a single wrapper
-* [ ] Add support for multiple wrappers
-* [ ] Add support for loading with ajax (grab element inside of a request)
-* [ ] Add support to load CSS and JS from ajax requests
-* [ ] Set the title of the page with the ajax <title> tag
-* [ ] Add support to back button of the browser (popstate)
+
+- [x] Basic usage with unique links
+- [x] Ignore other links without data-storia element
+- [x] Load content on a single wrapper
+- [ ] Add support for multiple wrappers
+- [ ] Add support for loading with ajax (grab element inside of a request)
+- [ ] Add support to load CSS and JS from ajax requests
+- [ ] Set the title of the page with the ajax ```<title>``` tag
+- [ ] Add support to back button of the browser (popstate)
+
 
 ## Contribution & Setup
 * git clone ```git@github.com:djalmaaraujo/storiajs.git```
